@@ -1,10 +1,10 @@
-
 import geometria.*;
-
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
+
         FiguraGeometrica figura;
         Scanner sc = new Scanner(System.in);
 
@@ -32,20 +32,39 @@ public class Main {
 
                 case 1:
                     System.out.println("-------- Circulo --------");
-                    System.out.print("Ingrese el radio: ");
-                    double radio = sc.nextDouble();
 
-                    figura = new Circulo(radio);
+                    double radio;
+
+                    do {
+                        System.out.print("Ingrese el radio: ");
+                        radio = sc.nextDouble();
+                    } while (!validarDatos(radio));
+
+                    System.out.print("Ingrese el color: ");
+                    String colorC = sc.next();
+
+                    figura = new Circulo(radio, colorC);
                     figura.imprimirDatos();
                     break;
 
                 case 2:
                     System.out.println("-------- Rectangulo --------");
-                    System.out.print("Ingrese la base: ");
-                    double base = sc.nextDouble();
 
-                    System.out.print("Ingrese la altura: ");
-                    double altura = sc.nextDouble();
+                    double base;
+                    double altura;
+
+                    do {
+                        System.out.print("Ingrese la base: ");
+                        base = sc.nextDouble();
+                    } while (!validarDatos(base));
+
+                    do {
+                        System.out.print("Ingrese la altura: ");
+                        altura = sc.nextDouble();
+                    } while (!validarDatos(altura));
+
+                    System.out.print("Ingrese el color: ");
+                    String colorRectangulo = sc.next();
 
                     figura = new Rectangulo(base, altura);
                     figura.imprimirDatos();
@@ -53,14 +72,33 @@ public class Main {
 
                 case 3:
                     System.out.println("-------- Triangulo --------");
-                    System.out.print("Ingrese el primer lado: ");
-                    double l1 = sc.nextDouble();
 
-                    System.out.print("Ingrese el segundo lado: ");
-                    double l2 = sc.nextDouble();
+                    double l1, l2, l3;
 
-                    System.out.print("Ingrese el tercer lado: ");
-                    double l3 = sc.nextDouble();
+                    do {
+                        System.out.print("Ingrese el primer lado: ");
+                        l1 = sc.nextDouble();
+
+                        System.out.print("Ingrese el segundo lado: ");
+                        l2 = sc.nextDouble();
+
+                        System.out.print("Ingrese el tercer lado: ");
+                        l3 = sc.nextDouble();
+
+                        if (!validarDatos(l1) || !validarDatos(l2) || !validarDatos(l3)) {
+                            continue;
+                        }
+
+                        if (l1 + l2 <= l3 || l1 + l3 <= l2 || l2 + l3 <= l1) {
+                            System.out.println("Los lados no forman un triangulo valido.");
+                        } else {
+                            break;
+                        }
+
+                    } while (true);
+
+                    System.out.print("Ingrese el color: ");
+                    String colorTriangulo = sc.next();
 
                     figura = new Triangulo(l1, l2, l3);
                     figura.imprimirDatos();
@@ -68,10 +106,18 @@ public class Main {
 
                 case 4:
                     System.out.println("-------- Cuadrado --------");
-                    System.out.print("Ingrese un lado: ");
-                    double lado = sc.nextDouble();
 
-                    figura = new Cuadrado(lado);
+                    double lado;
+
+                    do {
+                        System.out.print("Ingrese un lado: ");
+                        lado = sc.nextDouble();
+                    } while (!validarDatos(lado));
+
+                    System.out.print("Ingrese el color: ");
+                    String colorCuadrado = sc.next();
+
+                    figura = new Cuadrado(colorCuadrado, lado);
                     figura.imprimirDatos();
                     break;
 
@@ -85,8 +131,17 @@ public class Main {
             }
 
         } while (opcion != 5);
-        System.out.println("Acaba de salir del sistema Muchas gracias");
+
+        System.out.println("Acaba de salir del sistema. Muchas gracias.");
 
         sc.close();
     }
+    public static boolean validarDatos(double dato) {
+        if (dato <= 0) {
+            System.out.println("Error: El valor debe ser mayor que cero.");
+            return false;
+        }
+        return true;
+    }
+
 }

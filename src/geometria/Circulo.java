@@ -33,7 +33,7 @@ public class Circulo extends FiguraGeometrica {
     }
     @Override
     public void imprimirDatos() {
-        System.out.println("---------------Circulo--------------");
+        System.out.println("---------------Circulo------------");
         System.out.println("radio = " + radio);
         super.imprimirDatos();
 
