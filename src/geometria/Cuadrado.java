@@ -17,9 +17,7 @@ public class Cuadrado extends FiguraGeometrica {
 
     public void setLado(double lado) {
         if (lado <= 0) {
-            throw new IllegalArgumentException(
-                    "El lado debe ser positivo"
-            );
+            throw new IllegalArgumentException( "El lado debe ser positivo");
         }
         this.lado = lado;
     }
@@ -38,9 +36,7 @@ public class Cuadrado extends FiguraGeometrica {
     public void imprimirDatos() {
 
         System.out.println("-------------Cuadrado-----------");
-
         System.out.println("Lado: " + lado);
-
         super.imprimirDatos();
     }
 }

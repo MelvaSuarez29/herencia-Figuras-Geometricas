@@ -64,9 +64,9 @@ public class Main {
                     } while (!validarDatos(altura));
 
                     System.out.print("Ingrese el color: ");
-                    String colorRectangulo = sc.next();
+                    String colorR = sc.next();
 
-                    figura = new Rectangulo(base, altura);
+                    figura = new Rectangulo(colorR,base, altura);
                     figura.imprimirDatos();
                     break;
 
@@ -98,9 +98,9 @@ public class Main {
                     } while (true);
 
                     System.out.print("Ingrese el color: ");
-                    String colorTriangulo = sc.next();
+                    String colorT = sc.next();
 
-                    figura = new Triangulo(l1, l2, l3);
+                    figura = new Triangulo(colorT,l1, l2, l3);
                     figura.imprimirDatos();
                     break;
 
@@ -115,9 +115,9 @@ public class Main {
                     } while (!validarDatos(lado));
 
                     System.out.print("Ingrese el color: ");
-                    String colorCuadrado = sc.next();
+                    String colorCuad = sc.next();
 
-                    figura = new Cuadrado(colorCuadrado, lado);
+                    figura = new Cuadrado(colorCuad, lado);
                     figura.imprimirDatos();
                     break;
 
